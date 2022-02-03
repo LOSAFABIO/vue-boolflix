@@ -1,16 +1,23 @@
 <template>
   <div>
-    <div>
+    <div class="container-file film">
         <ul>
-            <li >
-                <p>Titolo           : {{info.title}}</p>
-                <p>Titolo originale : {{info.original_title}}</p>
-                <p class="lingua">Lingua
-                <img 
-                class="img_flag"
-                :src="getFlags()">
-                </p>
-                <p>Voto             : {{info.vote_average}}</p>
+            <li class="tv">
+                <div class="w_50">
+                    <img 
+                    class="copertina"
+                    :src= "getImage()" alt="">
+                </div>
+                <div>
+                    <h3>Titolo           : {{info.title}}</h3>
+                    <h5>Titolo originale : {{info.original_title}}</h5>
+                    <p class="lingua">Lingua
+                    <img 
+                    class="img_flag"
+                    :src="getFlags()">
+                    </p>
+                    <p>Voto             : {{info.vote_average}}</p>
+                </div>
             </li>
         </ul>
     </div>
@@ -33,6 +40,11 @@ export default {
             } else {
                 return "https://static-cdn.whokeys.com/mall/image/region/Worldwide.png"
             }
+        },
+        getImage(){
+            if (!this.info.poster_path == ""){
+                return "https://image.tmdb.org/t/p/w342/" + this.info.poster_path
+            }
         }
     }
 }
@@ -49,5 +61,9 @@ export default {
     }
 }
 
+.film{
+    background-color: rgb(209, 132, 69);
+    display: flex;
+}
 
 </style>

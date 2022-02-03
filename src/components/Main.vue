@@ -6,18 +6,27 @@
         @filtraEnter="getFilm"
         />
     </div>
+
     <div class="container-all">
-      <div v-for="(movies,indice) in filmArray" 
-        :key="indice">
-          <Films
-          :info="movies"
-          />
+      <h2>FILM</h2>
+      <div class="film">
+        <div v-for="movies in filmArray" 
+          :key="movies.id">
+            <Films
+            :info="movies"
+            />
+        </div>
       </div>
-      <div v-for="(series,indice) in serieArray" 
-        :key="indice">
-          <Series
-          :cube="series"
-          />
+      <div>
+        <h2>SERIE TV</h2>
+        <div class="serie">
+          <div v-for="series in serieArray" 
+            :key="series.id">
+              <Series
+              :cube="series"
+              />
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -57,6 +66,7 @@ export default {
         .then((risposta) => {
           // handle success
           this.filmArray = risposta.data.results;
+          this.select = ""
           console.log(this.filmArray)
         })
         .catch(function (error) {
@@ -73,6 +83,8 @@ export default {
         .then((risposta2) => {
           // handle success
           this.serieArray = risposta2.data.results;
+          this.select = ""
+
           console.log(this.serieArray)
         })
         .catch(function (error) {
@@ -87,14 +99,23 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 
-.streak{
-  background-color: cadetblue;
+h2{
+  color: white;
+  padding: 20px 100px;
 }
 
-.container-all{
+.streak{
+  background-color: rgb(71, 190, 155);
+}
+
+.film, .serie{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.container-all{
+  background-color: rgb(48, 48, 48);
 }
 
 </style>

@@ -1,16 +1,23 @@
 <template>
 <div>
-    <div>
+    <div class="container-file serie">
         <ul>
-            <li >
-                <p>Titolo           : {{cube.name}}</p>
-                <p>Titolo originale : {{cube.original_name}}</p>
-                <p class="lingua">Lingua
-                <img 
-                class="img_flag"
-                :src="getFlags2()">
-                </p>
-                <p>Voto             : {{cube.vote_average}}</p>
+            <li class="tv">
+                <div class="w_50">
+                    <img 
+                    class="copertina"
+                    :src= "getImage()" alt="">
+                </div>
+                <div>
+                    <h3>Titolo           : {{cube.name}}</h3>
+                    <h5>Titolo originale : {{cube.original_name}}</h5>
+                    <p class="lingua">Lingua
+                    <img 
+                    class="img_flag"
+                    :src="getFlags2()">
+                    </p>
+                    <p>Voto             : {{cube.vote_average}}</p> 
+                </div>
             </li>
         </ul>
     </div>
@@ -33,13 +40,24 @@ export default {
             } else {
                 return "https://static-cdn.whokeys.com/mall/image/region/Worldwide.png"
             }
+        },
+        getImage(){
+            if (!this.cube.poster_path == ""){
+                return "https://image.tmdb.org/t/p/w342/" + this.cube.poster_path
+            }    
         }
+
     }
 }
 
 </script>
 
 <style scoped lang="scss">
+
+.serie{
+    background-color: rgb(136, 187, 59);
+    display: flex;
+}
 
 .lingua{
     display: inline-block;
@@ -49,5 +67,6 @@ export default {
     height: 15px;
     }
 }
+
 
 </style>

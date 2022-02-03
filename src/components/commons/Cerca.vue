@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div>
+  <div class="container-btn">
     <input 
     class="cerca" 
     type="text" 
@@ -29,6 +29,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
+.container-btn{
+    text-align: center;
+}
 
 .cerca{
     width: 220px;
