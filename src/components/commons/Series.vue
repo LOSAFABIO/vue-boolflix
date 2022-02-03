@@ -1,34 +1,34 @@
 <template>
-  <div>
+<div>
     <div>
         <ul>
             <li >
-                <p>Titolo           : {{info.title}}</p>
-                <p>Titolo originale : {{info.original_title}}</p>
+                <p>Titolo           : {{cube.name}}</p>
+                <p>Titolo originale : {{cube.original_name}}</p>
                 <p class="lingua">Lingua
                 <img 
                 class="img_flag"
-                :src="getFlags()">
+                :src="getFlags2()">
                 </p>
-                <p>Voto             : {{info.vote_average}}</p>
+                <p>Voto             : {{cube.vote_average}}</p>
             </li>
         </ul>
     </div>
-  </div>
+</div>
 </template>
 
 <script>
 export default {
-    name  : "Films",
+    name  : "Series",
     props : {
-        info  : Object
+        cube : Object
     },
 
     methods : {
-        getFlags(){
-            if (this.info.original_language == "en"){
+        getFlags2(){
+            if (this.cube.original_language == "en"){
                 return "https://static-cdn.whokeys.com/mall/image/region/Great_Britain.png"
-            } else if (this.info.original_language == "it"){
+            } else if (this.cube.original_language == "it"){
                 return "https://static-cdn.whokeys.com/mall/image/region/Italy.png"
             } else {
                 return "https://static-cdn.whokeys.com/mall/image/region/Worldwide.png"
@@ -36,6 +36,7 @@ export default {
         }
     }
 }
+
 </script>
 
 <style scoped lang="scss">
@@ -48,6 +49,5 @@ export default {
     height: 15px;
     }
 }
-
 
 </style>

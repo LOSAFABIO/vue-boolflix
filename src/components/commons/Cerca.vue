@@ -5,7 +5,8 @@
     class="cerca" 
     type="text" 
     placeholder="Cerca quello che più ti interessa!"
-    v-model.trim="select" >
+    v-model.trim="select" 
+    @keyUp="$emit(`filtraEnter`, select)">
 
     <button 
     @click.prevent="$emit(`filtra`, select)" 
@@ -27,7 +28,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="scss">
 
 .cerca{
     width: 220px;
