@@ -1,4 +1,5 @@
 <template>
+<div>
   <div>
     <input 
     class="cerca" 
@@ -12,6 +13,7 @@
     Clicca qui!
     </button>
   </div>
+</div>
 </template>
 
 <script>
@@ -21,7 +23,7 @@ export default {
         return{
             select : ""
         }
-    }
+    },
 }
 </script>
 

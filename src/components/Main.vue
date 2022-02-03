@@ -1,20 +1,30 @@
 <template>
   <div class="container">
     <div class="streak">
-      <Cerca @filtra="getFilm"/>
+        <Cerca 
+        @filtra="getFilm"
+        />
     </div>
+    <div v-for="(movies,indice) in filmArray" 
+      :key="indice">
+        <Films
+        :info="movies"
+        />
+    </div> 
   </div>
 </template>
 
 <script>
 
+import Films from "./commons/Films.vue";
 import Cerca from "./commons/Cerca.vue";
 import axios from "axios";
 
 export default {
   name       : "Main",
   components : {
-    Cerca
+    Cerca,
+    Films
   },
   data(){
     return {
