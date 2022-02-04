@@ -16,7 +16,11 @@
                     class="img_flag"
                     :src="getFlags2()">
                     </p>
-                    <p>Voto             : {{cube.vote_average}}</p> 
+                    <p
+                    v-if="getNumber() != 0" >Voto             : {{getStars()}}</p>
+                    <p
+                    v-else >Voto             : Senza voto</p> 
+
                 </div>
             </li>
         </ul>
@@ -30,7 +34,11 @@ export default {
     props : {
         cube : Object
     },
-
+    data(){
+        return{
+            star : 0
+        }
+    },
     methods : {
         getFlags2(){
             if (this.cube.original_language == "en"){
@@ -44,9 +52,21 @@ export default {
         getImage(){
             if (!this.cube.poster_path == ""){
                 return "https://image.tmdb.org/t/p/w342/" + this.cube.poster_path
-            }    
+            } else {
+                return ""
+            } 
+        },
+        getNumber(){
+            return (this.cube.vote_average / 2).toFixed(0)
+        },
+        getStars(){
+            let stelle = "" 
+            let numero = this.getNumber()
+                for(let i=0; i < numero; i++){
+                    stelle += "★"
+                }
+                return stelle
         }
-
     }
 }
 

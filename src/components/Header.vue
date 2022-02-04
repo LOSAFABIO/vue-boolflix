@@ -1,63 +1,41 @@
 <template>
   <div class="container">
-    <div class="container-all">
-      <h2>FILM</h2>
-      <div class="film">
-        <div v-for="movies in listFilms" 
-          :key="movies.id">
-            <Films
-            :info="movies"
-            />
-        </div>
-      </div>
-      <div>
-        <h2>SERIE TV</h2>
-        <div class="serie">
-          <div v-for="series in listSeries" 
-            :key="series.id">
-              <Series
-              :cube="series"
-              />
-          </div>
-        </div>
-      </div>
+    <div class="container-movies">
+        <Cerca 
+        @filtra="getFilmSerieAncora"
+        />
     </div>
   </div>
 </template>
 
 <script>
 
-import Films from "./commons/Films.vue";
+import Cerca from "./commons/Cerca.vue";
 // import axios from "axios";
-import Series from './commons/Series.vue';
 
 export default {
-  name       : "Main",
+  name: "Header",
   components : {
-    Films,
-    Series
-  },
-  props : {
-    listFilms  : Array,
-    listSeries : Array
+    Cerca
   },
   data(){
-    return {
-  //     apiURL     : "https://api.themoviedb.org/3/search/movie/",
-  //     apiURL2    : "https://api.themoviedb.org/3/search/tv/",
-      filmArray  : [],
-      serieArray : []
-
+    return{
+      getSerieFilm : ""
     }
   },
-  computed : {
-    arrayFilmSerie(){
-        return [...this.filmArray, ...this.serieArray]
+  methods : {
+    getFilmSerieAncora(getFilmSerie){
+      this.$emit(`getSerieFilm`,getFilmSerie)
     }
   }
-
-  // methods:{
-  //   getFilm(select){
+  // data(){
+  //   return {
+  //     apiURL     : "https://api.themoviedb.org/3/search/movie/",
+  //     apiURL2    : "https://api.themoviedb.org/3/search/tv/",
+  //   }
+  // },  
+  //   methods:{
+  //   getFilmSerie(select){
   //       axios.get(this.apiURL, {
   //         params : {
   //           api_key : "a39afba29712edaa4c2865fea35ce64f",
@@ -94,29 +72,14 @@ export default {
   //       })
   //   }
   // }
-}
+} 
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 
-h2{
-  color: white;
-  padding: 20px 100px;
-}
-
-.streak{
-  background-color: rgb(71, 190, 155);
-}
-
-.film, .serie{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.container-all{
-  background-color: rgb(48, 48, 48);
+.container-movies{
+  background-color: rgb(79, 159, 161);
 }
 
 </style>

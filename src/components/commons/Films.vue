@@ -16,7 +16,7 @@
                     class="img_flag"
                     :src="getFlags()">
                     </p>
-                    <p>Voto             : {{info.vote_average}}</p>
+                    <p>Voto             : {{getStars()}}</p>
                 </div>
             </li>
         </ul>
@@ -45,7 +45,20 @@ export default {
             if (!this.info.poster_path == ""){
                 return "https://image.tmdb.org/t/p/w342/" + this.info.poster_path
             }
+        },
+        getNumber(){
+            return (this.info.vote_average / 2).toFixed(0)
+        },
+        getStars(){
+            let stelle = "" 
+            let numero = this.getNumber()
+            
+            for(let i=0; i < numero; i++){
+                stelle += `★`
+            }
+            return stelle
         }
+
     }
 }
 </script>
