@@ -29,6 +29,7 @@ export default {
     getDataApi (filtroApp){
       this.inputApp = filtroApp
       this.getFilmSerie()
+      console.log(this.inputApp)
     },
     getFilmSerie(){
         axios.get(this.apiURL, {
