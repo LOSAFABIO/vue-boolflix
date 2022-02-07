@@ -3,12 +3,12 @@
     <div class="container-file film">
         <ul>
             <li class="tv">
-                <div class="w_50">
+                <div class="w_img">
                     <img 
                     class="copertina"
                     :src= "getImage()" alt="">
                 </div>
-                <div>
+                <div class="descrizione">
                     <h3>Titolo           : {{info.title}}</h3>
                     <h5>Titolo originale : {{info.original_title}}</h5>
                     <p class="lingua">Lingua
@@ -16,7 +16,9 @@
                     class="img_flag"
                     :src="getFlags()">
                     </p>
-                    <p>Voto             : {{getStars()}}</p>
+                    <p
+                    v-if="getNumber() != 0" >Voto             : {{getStars()}} </p>
+                    <p v-else >  Voto : Senza voto </p>
                 </div>
             </li>
         </ul>
@@ -44,6 +46,8 @@ export default {
         getImage(){
             if (!this.info.poster_path == ""){
                 return "https://image.tmdb.org/t/p/w342/" + this.info.poster_path
+            }else{
+                return "https://repository-images.githubusercontent.com/279611541/b7e1e580-c611-11ea-9b24-523c65baea0e"
             }
         },
         getNumber(){
@@ -64,19 +68,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
-.lingua{
-    display: inline-block;
-
-    .img_flag{
-    margin: 0 10px;
-    height: 15px;
-    }
-}
-
-.film{
-    background-color: rgb(209, 132, 69);
-    display: flex;
-}
 
 </style>

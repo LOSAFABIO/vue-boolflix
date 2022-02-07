@@ -5,18 +5,19 @@
 }
 
 .container-file{
-    border: solid 2px black;
-    border-radius: 10px;
-    margin: 5px 5px;
-    width: 300px;
-    height: 250px;
-    opacity: 0.8;
+    margin: 10px 10px;
+    width: 320px;
+    height: 500px;
+    display: flex;
 }
 
 ul{
-
+    width: 100%;
+    height: 100%;
 
     li{
+        width: 100%;
+        height: 100%;    
         list-style-type: none;
         text-align: center;
     }
@@ -25,16 +26,55 @@ ul{
 .copertina{
     display: block;
     width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+    z-index: 2;
+    border-radius: 10px;
 }
 
 .tv{
     display: flex;
     align-items: center;
+    justify-content: center;
     height: 100%;
-    justify-content: start;
     padding: 0 5px;
+    position: relative;
 }
 
-.w_50{
-    width: 50%;
+.descrizione{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    color: white;
+    padding: 40px 15px;
+    border-radius: 10px;
+
+    h3, h5, p{
+        font-size: 1.2rem;
+        margin: 7px 0;
+        }
+    
+}   
+
+.tv:hover .descrizione{
+    z-index: 3;
+    display: block;
 }
+
+.lingua{
+    display: inline-block;
+
+    .img_flag{
+    height: 15px;
+    margin: 0 10px;
+    }
+}
+
+
+ 

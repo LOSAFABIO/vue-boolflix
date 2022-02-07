@@ -3,12 +3,12 @@
     <div class="container-file serie">
         <ul>
             <li class="tv">
-                <div class="w_50">
+                <div class="w_img">
                     <img 
                     class="copertina"
                     :src= "getImage()" alt="">
                 </div>
-                <div>
+                <div class="descrizione">
                     <h3>Titolo           : {{cube.name}}</h3>
                     <h5>Titolo originale : {{cube.original_name}}</h5>
                     <p class="lingua">Lingua
@@ -17,10 +17,8 @@
                     :src="getFlags2()">
                     </p>
                     <p
-                    v-if="getNumber() != 0" >Voto             : {{getStars()}}</p>
-                    <p
-                    v-else >Voto             : Senza voto</p> 
-
+                    v-if="getNumber() != 0" >Voto             : {{getStars()}} </p>
+                    <p v-else >  Voto : Senza voto </p>
                 </div>
             </li>
         </ul>
@@ -34,11 +32,11 @@ export default {
     props : {
         cube : Object
     },
-    data(){
-        return{
-            star : 0
-        }
-    },
+    // data(){
+    //     return{
+    //         star : 0
+    //     }
+    // },
     methods : {
         getFlags2(){
             if (this.cube.original_language == "en"){
@@ -53,7 +51,7 @@ export default {
             if (!this.cube.poster_path == ""){
                 return "https://image.tmdb.org/t/p/w342/" + this.cube.poster_path
             } else {
-                return ""
+                return "https://repository-images.githubusercontent.com/279611541/b7e1e580-c611-11ea-9b24-523c65baea0e"
             } 
         },
         getNumber(){
@@ -73,20 +71,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
-.serie{
-    background-color: rgb(136, 187, 59);
-    display: flex;
-}
-
-.lingua{
-    display: inline-block;
-
-    .img_flag{
-    margin: 0 10px;
-    height: 15px;
-    }
-}
-
 
 </style>

@@ -113,10 +113,19 @@ h2{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  padding: 10px 0;
 }
 
 .container-all{
   background-color: rgb(48, 48, 48);
+  padding: 10px 0;
+  margin: 66px 0;
+}
+
+h2{
+ background-color: #202020;
+ text-align: center;
+ margin: 10px 0;
 }
 
 </style>

@@ -80,6 +80,11 @@ export default {
 
 .container-movies{
   background-color: rgb(79, 159, 161);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 10;
+
 }
 
 </style>
